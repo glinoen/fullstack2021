@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { gql, useMutation } from '@apollo/client'
 
 const EDIT_BIRTHYEAR = gql`
-  mutation editAuthor($name: String!, $setBornTo: Int!) {
+  mutation updateAuthor($name: String!, $setBornTo: Int!) {
     editAuthor(name: $name, setBornTo: $setBornTo) {
       name
       born
@@ -14,6 +14,7 @@ const Authors = ({ show, authors }) => {
   const [name, setName] = useState('')
   const [born, setBorn] = useState('')
   const [ editBirthyear ] = useMutation(EDIT_BIRTHYEAR)
+  
 
   const submit = async (event) => {
     event.preventDefault()
